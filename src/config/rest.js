@@ -1,3 +1,7 @@
 export default {
-  LOGIN: '/login',
+  LOGIN: '/user/login',
+  REGISTER: '/user/register',
+  CUSTOMER: '/customer',
+  PRODUCT: '/product',
+  UPLOAD_IMG: '/upload',
 };
