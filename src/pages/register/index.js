@@ -175,6 +175,7 @@ const Register = () => {
                   name="accountType"
                   value={accountType}
                   hidden
+                  readOnly
                 />
               </label>
               <button
