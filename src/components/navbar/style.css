@@ -42,28 +42,25 @@
   color: var(--primary);
 }
 
-div.login {
+.container--header a.login {
   background-color: var(--primary);
   padding: 0.3rem 2.5rem;
   border-radius: 59px;
+  text-decoration: none;
+  color: #fff;
 }
 
-div.login:hover {
+.container--header a.login:hover {
   background-color: var(--primary-light);
   padding: 0.3rem 2.5rem;
   border-radius: 59px;
 }
 
-div.login a {
-  text-decoration: none;
-  color: #fff;
-}
-
-div.register a {
+.container--header div.register a {
   text-decoration: none;
   color: var(--primary);
 }
 
-div.register a:hover {
+.container--header div.register a:hover {
   color: var(--primary-light);
 }

@@ -38,11 +38,9 @@ const Navbar = (props) => {
                     <div className="menu-login">Daftar Akun</div>
                   </Link>
                 </div>
-                <div className="login">
-                  <Link className="d-flex" to="/Login" key="login">
-                    <div className="menu-login">Login</div>
-                  </Link>
-                </div>
+                <Link className="d-flex login" to="/Login" key="login">
+                  <div className="menu-login">Login</div>
+                </Link>
               </>
             )}
           </div>

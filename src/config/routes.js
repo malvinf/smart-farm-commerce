@@ -1,6 +1,11 @@
-import { Login, Home } from '../pages';
+import { Login, Home, Register } from '../pages';
 
 const routes = [
+  {
+    path: '/Register',
+    component: Register,
+    isPublic: true,
+  },
   {
     path: '/Login',
     component: Login,
