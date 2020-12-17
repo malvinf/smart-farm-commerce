@@ -5,7 +5,7 @@ import './style.css';
 
 const Navbar = (props) => {
   const { activeMenu } = props;
-  const listMenu = ['home', 'product'];
+  const listMenu = ['Home', 'ProductForBuyer', 'ProductForSeller'];
   const Logout = () => {
     setCookie('userData', '', -1);
     setCookie('token', '', -1);
