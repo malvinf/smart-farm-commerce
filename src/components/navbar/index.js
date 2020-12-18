@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { isUserAuthenticated, setCookie } from '../../utils/cookie';
