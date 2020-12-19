@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Container,
   Row,
   Col,
   Button,
@@ -13,15 +12,61 @@ import {
   CardBody,
   CardText,
 } from 'reactstrap';
+import { getCookie } from '../../utils/cookie';
 import Navbar from '../../components/navbar/index';
 import Sidebar from '../../components/sidebar/index';
+import { CustomerService } from '../../services';
 import {} from './style.css';
 
 const Customer = () => {
+  const [customerLoading, setCustomerLoading] = useState(false);
+  const [nama, setNama] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [noHp, setNoHp] = useState('');
+  const [alamat, setAlamat] = useState('');
+
+  function getId() {
+    if (getCookie('userData')) {
+      const data = JSON.parse(getCookie('userData')).id;
+      return data;
+    }
+    return '';
+  }
+  const id = `${getId()}`;
+
+  useEffect(() => {
+    CustomerService.getCustomer(id)
+      .then((res) => {
+        setNama(res.nama);
+        setEmail(res.email);
+        setPassword(res.password);
+        setNoHp(res.noHp);
+        setAlamat(res.alamat);
+      })
+      // .catch((err) => {
+      //  console.log(err);
+      // })
+      .finally(() => {
+        setCustomerLoading(false);
+      });
+  }, [id]);
+
+  const onSubmit = () => {
+    setCustomerLoading(true);
+    CustomerService.updateCustomer(id, nama, email, noHp, alamat)
+      // .error((err) => {
+      // console.log(err);
+      // })
+      .finally(() => {
+        setCustomerLoading(false);
+      });
+  };
+
   return (
     <>
       <Navbar />
-      <Container>
+      <div className="container">
         <Row className="mt-4">
           <Col xs="2" className="sidebar">
             <Sidebar />
@@ -35,7 +80,16 @@ const Customer = () => {
             <Form>
               <FormGroup className="mb-2">
                 <Label for="name">Name</Label>
-                <Input type="name" name="name" id="name" placeholder="name" />
+                <Input
+                  type="name"
+                  name="name"
+                  id="name"
+                  placeholder="name"
+                  value={nama}
+                  onChange={(e) => {
+                    setNama(e.target.value);
+                  }}
+                />
               </FormGroup>
               <FormGroup className="mb-2">
                 <Label for="email">Email</Label>
@@ -44,6 +98,10 @@ const Customer = () => {
                   name="email"
                   id="email"
                   placeholder="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </FormGroup>
               <FormGroup className="mb-2">
@@ -53,6 +111,10 @@ const Customer = () => {
                   name="password"
                   id="password"
                   placeholder="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </FormGroup>
               <FormGroup className="mb-2">
@@ -62,13 +124,30 @@ const Customer = () => {
                   name="phoneNumber"
                   id="phoneNumber"
                   placeholder="no hp"
+                  value={noHp}
                 />
               </FormGroup>
               <FormGroup className="mb-2">
                 <Label for="alamat">Alamat</Label>
-                <Input type="textarea" name="alamat" id="alamat" />
+                <Input
+                  type="textarea"
+                  name="alamat"
+                  id="alamat"
+                  value={alamat}
+                  onChange={(e) => {
+                    setAlamat(e.target.value);
+                  }}
+                />
               </FormGroup>
-              <Button className="mt-4 float-end px-5" color="success">
+              <Button
+                className="mt-4 float-end px-5"
+                color="success"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSubmit();
+                }}
+                disabled={customerLoading}
+              >
                 Submit
               </Button>
             </Form>
@@ -91,7 +170,7 @@ const Customer = () => {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </div>
     </>
   );
 };

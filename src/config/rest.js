@@ -3,7 +3,11 @@ export default {
   LOGINP: '/userPetani/login',
   REGISTERC: '/user/register',
   REGISTERP: '/userPetani/register',
-  CUSTOMER: '/customer',
+  LOGIN: '/user/login',
+  REGISTER: '/user/register',
+  CUSTOMER: (id) => {
+    return `/customer/${id}`;
+  },
   PRODUCT: '/product',
   UPLOAD_IMG: '/upload',
   GOODS: '/goods',
