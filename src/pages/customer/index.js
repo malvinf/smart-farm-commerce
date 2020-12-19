@@ -45,9 +45,9 @@ const Customer = () => {
         setNoHp(res.noHp);
         setAlamat(res.alamat);
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      // .catch((err) => {
+      //  console.log(err);
+      // })
       .finally(() => {
         setCustomerLoading(false);
       });
@@ -56,9 +56,9 @@ const Customer = () => {
   const onSubmit = () => {
     setCustomerLoading(true);
     CustomerService.updateCustomer(id, nama, email, noHp, alamat)
-      .error((err) => {
-        console.log(err);
-      })
+      // .error((err) => {
+      // console.log(err);
+      // })
       .finally(() => {
         setCustomerLoading(false);
       });

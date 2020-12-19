@@ -27,8 +27,8 @@ const Deactive = () => {
 
   const deleteAccount = () => {
     CustomerService.deleteCustomer(id)
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // console.log(err);
       })
       .finally(() => {
         window.location.replace('/login');
