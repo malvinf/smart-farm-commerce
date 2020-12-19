@@ -9,10 +9,31 @@ import {
   Label,
   Button,
 } from 'reactstrap';
+import { getCookie } from '../../utils/cookie';
+import { CustomerService } from '../../services';
 import Navbar from '../../components/navbar/index';
 import Sidebar from '../../components/sidebar/index';
 
 const Deactive = () => {
+  function getId() {
+    if (getCookie('userData')) {
+      // console.log(JSON.parse(getCookie('data')).id);
+      const data = JSON.parse(getCookie('userData')).id;
+      return data;
+    }
+    return '';
+  }
+  const id = `${getId()}`;
+
+  const deleteAccount = () => {
+    CustomerService.deleteCustomer(id)
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        window.location.replace('/login');
+      });
+  };
   return (
     <Container>
       <Navbar />
@@ -62,7 +83,14 @@ const Deactive = () => {
                 </FormGroup>
               </Col>
             </FormGroup>
-            <Button className="mt-4 text-center px-5" color="danger">
+            <Button
+              className="mt-4 text-center px-5"
+              color="danger"
+              onClick={(e) => {
+                e.preventDefault();
+                deleteAccount();
+              }}
+            >
               Deactive Account
             </Button>
           </Form>

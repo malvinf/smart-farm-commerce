@@ -1,15 +1,22 @@
 import BaseService from './baseService';
 import API from '../config/rest';
 
-const Customer = (name, email, address, password, phoneNumber, accountType) => {
-  return BaseService.post(API.CUSTOMER, {
+const getCustomer = (id) => {
+  return BaseService.get(API.CUSTOMER(id));
+};
+
+const updateCustomer = (id, name, email, password, nohp, alamat) => {
+  return BaseService.put(API.CUSTOMER(id), {
     name,
     email,
-    address,
     password,
-    phoneNumber,
-    accountType,
+    nohp,
+    alamat,
   });
 };
 
-export default { Customer };
+const deleteCustomer = (id) => {
+  return BaseService.delete(API.CUSTOMER(id));
+};
+
+export default { getCustomer, updateCustomer, deleteCustomer };
