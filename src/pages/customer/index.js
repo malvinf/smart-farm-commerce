@@ -27,8 +27,8 @@ const Customer = () => {
   const [alamat, setAlamat] = useState('');
 
   function getId() {
-    if (getCookie('userData')) {
-      const data = JSON.parse(getCookie('userData')).id;
+    if (getCookie('id')) {
+      const data = JSON.parse(getCookie('id'));
       return data;
     }
     return '';
@@ -38,11 +38,11 @@ const Customer = () => {
   useEffect(() => {
     CustomerService.getCustomer(id)
       .then((res) => {
-        setNama(res.nama);
-        setEmail(res.email);
-        setPassword(res.password);
-        setNoHp(res.noHp);
-        setAlamat(res.alamat);
+        setNama(res.data.name);
+        setEmail(res.data.email);
+        setPassword(res.data.password);
+        setNoHp(res.data.phoneNumber);
+        setAlamat(res.data.address);
       })
       // .catch((err) => {
       //  console.log(err);
