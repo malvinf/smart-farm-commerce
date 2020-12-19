@@ -16,13 +16,13 @@ const getCustomer = (id) => {
   return baseService.get(API.CUSTOMER(id));
 };
 
-const updateCustomer = (id, name, email, password, nohp, alamat) => {
+const updateCustomer = (id, name, email, password, phoneNumber, address) => {
   return baseService.put(API.CUSTOMER(id), {
     name,
     email,
     password,
-    nohp,
-    alamat,
+    phoneNumber,
+    address,
   });
 };
 

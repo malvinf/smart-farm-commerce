@@ -8,11 +8,11 @@ const Sidebar = () => {
       <h2>Setting</h2>
       <Nav vertical className="mr-3">
         <NavItem>
-          <NavLink href="/customer/:id">Update Profile</NavLink>
+          <NavLink href="./customer/">Update Profile</NavLink>
         </NavItem>
-        <NavLink href="/customer/:id">Ubah Password</NavLink>
+        <NavLink href="./customer/">Ubah Password</NavLink>
         <NavItem>
-          <NavLink href="/customer/:id" className="text-danger">
+          <NavLink href="./customer/" className="text-danger">
             Delete Account
           </NavLink>
         </NavItem>

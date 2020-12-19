@@ -20,11 +20,11 @@ import {} from './style.css';
 
 const Customer = () => {
   const [customerLoading, setCustomerLoading] = useState(false);
-  const [nama, setNama] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [noHp, setNoHp] = useState('');
-  const [alamat, setAlamat] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
 
   function getId() {
     if (getCookie('id')) {
@@ -38,11 +38,11 @@ const Customer = () => {
   useEffect(() => {
     CustomerService.getCustomer(id)
       .then((res) => {
-        setNama(res.data.name);
+        setName(res.data.name);
         setEmail(res.data.email);
         setPassword(res.data.password);
-        setNoHp(res.data.phoneNumber);
-        setAlamat(res.data.address);
+        setPhoneNumber(res.data.phoneNumber);
+        setAddress(res.data.address);
       })
       // .catch((err) => {
       //  console.log(err);
@@ -54,7 +54,7 @@ const Customer = () => {
 
   const onSubmit = () => {
     setCustomerLoading(true);
-    CustomerService.updateCustomer(id, nama, email, noHp, alamat)
+    CustomerService.updateCustomer(id, name, email, phoneNumber, address)
       // .error((err) => {
       // console.log(err);
       // })
@@ -65,8 +65,8 @@ const Customer = () => {
 
   return (
     <>
-      <Navbar />
       <div className="container">
+        <Navbar />
         <Row className="mt-4">
           <Col xs="2" className="sidebar">
             <Sidebar />
@@ -85,9 +85,9 @@ const Customer = () => {
                   name="name"
                   id="name"
                   placeholder="name"
-                  value={nama}
+                  value={name}
                   onChange={(e) => {
-                    setNama(e.target.value);
+                    setName(e.target.value);
                   }}
                 />
               </FormGroup>
@@ -118,13 +118,13 @@ const Customer = () => {
                 />
               </FormGroup>
               <FormGroup className="mb-2">
-                <Label for="nohp">No. Hp</Label>
+                <Label for="phoneNumber">No. Hp</Label>
                 <Input
                   type="phoneNumber"
                   name="phoneNumber"
                   id="phoneNumber"
                   placeholder="no hp"
-                  value={noHp}
+                  value={phoneNumber}
                 />
               </FormGroup>
               <FormGroup className="mb-2">
@@ -133,9 +133,9 @@ const Customer = () => {
                   type="textarea"
                   name="alamat"
                   id="alamat"
-                  value={alamat}
+                  value={address}
                   onChange={(e) => {
-                    setAlamat(e.target.value);
+                    setAddress(e.target.value);
                   }}
                 />
               </FormGroup>
@@ -163,11 +163,25 @@ const Customer = () => {
                 <Button color="primary" style={{ margin: '0 auto' }}>
                   Upload Photo
                 </Button>
-                <CardText tag="p" className="mt-3">
-                  Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG
-                </CardText>
               </CardBody>
             </Card>
+            <Col xs="3" className="ml-5">
+              <Card>
+                <CardImg
+                  width="10%"
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  alt=""
+                />
+                <CardBody className="text-center">
+                  <Button color="primary" style={{ margin: '0 auto' }}>
+                    Upload Photo
+                  </Button>
+                  <CardText tag="p" className="mt-3">
+                    Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Col>
           </Col>
         </Row>
       </div>
