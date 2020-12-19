@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
-import { daftar } from '../../services';
+import { produk } from '../../services';
 import { Navbar } from '../../components';
 import './style.css';
 
@@ -22,12 +22,12 @@ const SellerProduct = () => {
   const [category, setCategory] = useState('');
   const [minimum, setMinimun] = useState('');
   const [unit, setUnit] = useState('');
-  const [error, setError] = useState(false);
 
   const onSubmitLogin = () => {
     setLoginLoading(true);
-    daftar
-      .Register(
+    console.log(images);
+    produk
+      .CreateProduct(
         title,
         price,
         stock,
@@ -37,29 +37,36 @@ const SellerProduct = () => {
         minimum,
         unit
       )
+      .then(() => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          text: 'Produk berhasil ditambahkan!',
+          showConfirmButton: false,
+          timer: 3000,
+        }).then(() => {
+          window.location.href = '/Product';
+        });
+      })
       .catch(() => {
-        setError(true);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: 'Gagal 🙁',
+          showConfirmButton: false,
+          timer: 3000,
+        });
       });
+  };
 
-    if (error) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        text: 'Gagal 🙁',
-        showConfirmButton: false,
-        timer: 3000,
-      });
-    } else {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        text: 'Produk berhasil ditambahkan!',
-        showConfirmButton: false,
-        timer: 3000,
-      }).then(() => {
-        window.location.href = '/SellerProduct';
-      });
-    }
+  const UploadImage = (img) => {
+    // eslint-disable-next-line prefer-const
+    let bodyFormData = new FormData();
+    bodyFormData.append('file', img);
+    produk.UploadProductImg(bodyFormData).then((res) => {
+      setImages(res.data);
+      console.log(res.data);
+    });
   };
 
   return (
@@ -69,7 +76,7 @@ const SellerProduct = () => {
         <meta name="description" content="Register Daftar" />
       </Helmet>
       <Navbar activeMenu="ProductForSeller" />
-      <div className="container pg-register d-flex m-5 h-100">
+      <div className="container pg-register d-flex my-5">
         <div className="registerForm">
           <div className="register">
             <h5 className="text-center">Tambahkan Produk</h5>
@@ -97,7 +104,7 @@ const SellerProduct = () => {
                 />
               </label>
               <label htmlFor="price" className="form-label w-100">
-                Alamat Email
+                Harga Produk
                 <input
                   className="form-control form-control-sm mb-3"
                   type="price"
@@ -112,7 +119,7 @@ const SellerProduct = () => {
                 />
               </label>
               <label htmlFor="stock" className="form-label w-100">
-                Alamat
+                Stock
                 <input
                   className="form-control form-control-sm mb-3"
                   type="text"
@@ -127,7 +134,7 @@ const SellerProduct = () => {
                 />
               </label>
               <label htmlFor="description" className="form-label w-100">
-                Nomor HP
+                Deskripsi
                 <input
                   className="form-control form-control-sm mb-3"
                   type="text"
@@ -149,7 +156,7 @@ const SellerProduct = () => {
                     onClick={() => {
                       setCategory('Sayuran');
                     }}
-                    className={`me-auto category ${
+                    className={`me-auto accountTypes ${
                       category === 'Sayuran' ? 'active' : ''
                     }`}
                   >
@@ -160,7 +167,7 @@ const SellerProduct = () => {
                     onClick={() => {
                       setCategory('Buah');
                     }}
-                    className={`me-auto category ${
+                    className={`me-auto accountTypes ${
                       category === 'Buah' ? 'active' : ''
                     }`}
                   >
@@ -177,17 +184,16 @@ const SellerProduct = () => {
                 />
               </label>
               <label htmlFor="images" className="form-label w-100">
-                Tagged for Upload Images later
+                Images
                 <input
                   className="form-control form-control-sm mb-3"
-                  type="text"
+                  type="file"
                   name="images"
-                  value={images}
                   placeholder="Gambar Produk"
                   id="images"
                   required
                   onChange={(e) => {
-                    setImages(e.target.value);
+                    UploadImage(e.target.files[0]);
                   }}
                 />
               </label>
@@ -214,7 +220,7 @@ const SellerProduct = () => {
                     onClick={() => {
                       setUnit('Kilogram');
                     }}
-                    className={`me-auto unit ${
+                    className={`me-auto accountTypes ${
                       unit === 'Kilogram' ? 'active' : ''
                     }`}
                   >
@@ -225,7 +231,7 @@ const SellerProduct = () => {
                     onClick={() => {
                       setUnit('Gram');
                     }}
-                    className={`me-auto unit ${
+                    className={`me-auto accountTypes ${
                       unit === 'Gram' ? 'active' : ''
                     }`}
                   >
@@ -250,9 +256,6 @@ const SellerProduct = () => {
                 {isLoginLoading ? spinner : 'Simpan'}
               </button>
             </form>
-            <span className="loginQuestion my-5">
-              sudah punya akun dél Harvèst? <a href="/login">Masuk</a>
-            </span>
           </div>
         </div>
       </div>

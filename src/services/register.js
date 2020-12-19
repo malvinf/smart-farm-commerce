@@ -1,4 +1,4 @@
-import BaseService from './baseService';
+import baseService from './baseService';
 import API from '../config/rest';
 
 const RegisterC = (
@@ -9,7 +9,7 @@ const RegisterC = (
   phoneNumber,
   accountType
 ) => {
-  return BaseService.post(API.REGISTERC, {
+  return baseService.post(API.REGISTERC, {
     name,
     email,
     address,
@@ -27,7 +27,7 @@ const RegisterP = (
   phoneNumber,
   accountType
 ) => {
-  return BaseService.post(API.REGISTERP, {
+  return baseService.post(API.REGISTERP, {
     name,
     email,
     address,

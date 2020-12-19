@@ -8,4 +8,5 @@ export default {
   UPLOAD_IMG: '/upload',
   GOODS: '/goods',
   CHECKOUT: '/checkout',
+  UPLOAD: '/upload',
 };

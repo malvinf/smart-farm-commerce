@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
-import BaseService from './baseService';
+import baseService from './baseService';
+import baseServiceFile from './baseServiceFile';
 import API from '../config/rest';
-import { baseService } from '.';
 
 const CreateProduct = (
   title,
@@ -13,7 +13,7 @@ const CreateProduct = (
   minimum,
   unit
 ) => {
-  return BaseService.post(API.PRODUCT, {
+  return baseService.post(API.PRODUCT, {
     title,
     price,
     stock,
@@ -23,6 +23,10 @@ const CreateProduct = (
     minimum,
     unit,
   });
+};
+
+const UploadProductImg = (file) => {
+  return baseServiceFile.post(API.UPLOAD, file);
 };
 
 const GetProduct = () => {
@@ -58,4 +62,5 @@ export default {
   GetCart,
   DeleteCart,
   Checkout,
+  UploadProductImg,
 };

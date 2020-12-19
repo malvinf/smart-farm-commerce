@@ -88,7 +88,7 @@ const Cart = () => {
     auth.GetCustomer(JSON.parse(getCookie('id'))).then((res) => {
       setCust(res.data);
     });
-  }, []);
+  }, [cartList]);
 
   const calculateTotal = (cost) => {
     setTotal(total + cost);

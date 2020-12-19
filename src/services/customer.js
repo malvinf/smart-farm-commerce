@@ -1,8 +1,8 @@
-import BaseService from './baseService';
+import baseService from './baseService';
 import API from '../config/rest';
 
 const Customer = (name, email, address, password, phoneNumber, accountType) => {
-  return BaseService.post(API.CUSTOMER, {
+  return baseService.post(API.CUSTOMER, {
     name,
     email,
     address,
