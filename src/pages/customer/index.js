@@ -163,25 +163,11 @@ const Customer = () => {
                 <Button color="primary" style={{ margin: '0 auto' }}>
                   Upload Photo
                 </Button>
+                <CardText tag="p" className="mt-3">
+                  Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG
+                </CardText>
               </CardBody>
             </Card>
-            <Col xs="3" className="ml-5">
-              <Card>
-                <CardImg
-                  width="10%"
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                  alt=""
-                />
-                <CardBody className="text-center">
-                  <Button color="primary" style={{ margin: '0 auto' }}>
-                    Upload Photo
-                  </Button>
-                  <CardText tag="p" className="mt-3">
-                    Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
           </Col>
         </Row>
       </div>
