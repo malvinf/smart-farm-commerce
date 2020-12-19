@@ -21,11 +21,11 @@ import {} from './style.css';
 
 const Customer = () => {
   const [customerLoading, setCustomerLoading] = useState(false);
-  const [nama, setNama] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [noHp, setNoHp] = useState('');
-  const [alamat, setAlamat] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
 
   function getId() {
     if (getCookie('userData')) {
@@ -39,11 +39,11 @@ const Customer = () => {
   useEffect(() => {
     CustomerService.getCustomer(id)
       .then((res) => {
-        setNama(res.nama);
+        setName(res.name);
         setEmail(res.email);
         setPassword(res.password);
-        setNoHp(res.noHp);
-        setAlamat(res.alamat);
+        setPhoneNumber(res.phoneNumber);
+        setAddress(res.address);
       })
       // .catch((err) => {
       //  console.log(err);
@@ -55,7 +55,7 @@ const Customer = () => {
 
   const onSubmit = () => {
     setCustomerLoading(true);
-    CustomerService.updateCustomer(id, nama, email, noHp, alamat)
+    CustomerService.updateCustomer(id, name, email, phoneNumber, address)
       // .error((err) => {
       // console.log(err);
       // })
@@ -85,9 +85,9 @@ const Customer = () => {
                 name="name"
                 id="name"
                 placeholder="name"
-                value={nama}
+                value={name}
                 onChange={(e) => {
-                  setNama(e.target.value);
+                  setName(e.target.value);
                 }}
               />
             </FormGroup>
@@ -118,13 +118,13 @@ const Customer = () => {
               />
             </FormGroup>
             <FormGroup className="mb-2">
-              <Label for="nohp">No. Hp</Label>
+              <Label for="phoneNumber">No. Hp</Label>
               <Input
                 type="phoneNumber"
                 name="phoneNumber"
                 id="phoneNumber"
                 placeholder="no hp"
-                value={noHp}
+                value={phoneNumber}
               />
             </FormGroup>
             <FormGroup className="mb-2">
@@ -133,9 +133,9 @@ const Customer = () => {
                 type="textarea"
                 name="alamat"
                 id="alamat"
-                value={alamat}
+                value={address}
                 onChange={(e) => {
-                  setAlamat(e.target.value);
+                  setAddress(e.target.value);
                 }}
               />
             </FormGroup>

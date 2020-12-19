@@ -5,13 +5,13 @@ const getCustomer = (id) => {
   return BaseService.get(API.CUSTOMER(id));
 };
 
-const updateCustomer = (id, name, email, password, nohp, alamat) => {
+const updateCustomer = (id, name, email, password, phoneNumber, address) => {
   return BaseService.put(API.CUSTOMER(id), {
     name,
     email,
     password,
-    nohp,
-    alamat,
+    phoneNumber,
+    address,
   });
 };
 
