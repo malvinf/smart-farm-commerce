@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import { daftar } from '../../services';
+import { Navbar } from '../../components';
 import './style.css';
 
 const SellerProduct = () => {
@@ -67,7 +68,8 @@ const SellerProduct = () => {
         <title>dél Harvèst - CreateProduct</title>
         <meta name="description" content="Register Daftar" />
       </Helmet>
-      <div className="container pg-register d-flex h-100">
+      <Navbar activeMenu="ProductForSeller" />
+      <div className="container pg-register d-flex m-5 h-100">
         <div className="registerForm">
           <div className="register">
             <h5 className="text-center">Tambahkan Produk</h5>

@@ -19,35 +19,59 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('');
-  const [error, setError] = useState(false);
 
   const onSubmitLogin = () => {
     setLoginLoading(true);
-    daftar
-      .Register(name, email, address, password, phoneNumber, accountType)
-      .catch(() => {
-        setError(true);
-      });
-
-    if (error) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        text: 'Akun kamu gagal dibuat 🙁',
-        showConfirmButton: false,
-        timer: 3000,
-      });
+    if (accountType === 'Customer') {
+      daftar
+        .RegisterC(name, email, address, password, phoneNumber, accountType)
+        .then(() => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            text:
+              'Akun kamu telah berhasil dibuat, kamu akan diarahkan kehalaman login',
+            showConfirmButton: false,
+            timer: 3000,
+          }).then(() => {
+            window.location.href = '/login';
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            text: err.response.data.error,
+            showConfirmButton: false,
+            timer: 3000,
+          }).then(() => {
+            setLoginLoading(false);
+          });
+        });
     } else {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        text:
-          'Akun kamu telah berhasil dibuat, kamu akan diarahkan kehalaman login',
-        showConfirmButton: false,
-        timer: 3000,
-      }).then(() => {
-        window.location.href = '/login';
-      });
+      daftar
+        .RegisterP(name, email, address, password, phoneNumber, accountType)
+        .then(() => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            text:
+              'Akun kamu telah berhasil dibuat, kamu akan diarahkan kehalaman login',
+            showConfirmButton: false,
+            timer: 3000,
+          }).then(() => {
+            window.location.href = '/login';
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            text: err.response.data.error,
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        });
     }
   };
 
@@ -160,13 +184,13 @@ const Register = () => {
                   <a
                     href="##"
                     onClick={() => {
-                      setAccountType('Seller');
+                      setAccountType('Petani');
                     }}
                     className={`me-auto accountTypes ${
-                      accountType === 'Seller' ? 'active' : ''
+                      accountType === 'Petani' ? 'active' : ''
                     }`}
                   >
-                    Seller
+                    Petani
                   </a>
                 </div>
                 <input

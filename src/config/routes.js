@@ -1,16 +1,30 @@
 // eslint-disable-next-line import/named
-import { Login, Home, Register, BuyerProduct, SellerProduct } from '../pages';
+import {
+  Login,
+  Home,
+  Register,
+  BuyerProduct,
+  SellerProduct,
+  Cart,
+} from '../pages';
 
 const routes = [
   {
-    path: '/ProductForBuyer',
+    path: '/Cart',
+    component: Cart,
+    isPublic: false,
+    accountType: 'Customer',
+  },
+  {
+    path: '/Product',
     component: BuyerProduct,
     isPublic: true,
   },
   {
     path: '/ProductForSeller',
     component: SellerProduct,
-    isPublic: true,
+    isPublic: false,
+    accountType: 'Petani',
   },
   {
     path: '/Register',

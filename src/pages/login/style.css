@@ -61,3 +61,27 @@ body,
   color: var(--primary);
   border-radius: 0.2rem;
 }
+
+.pg-login .accountTypes {
+  padding: 0.3rem 1.5rem;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+}
+
+.pg-login .accountTypes.active {
+  padding: 0.3rem 1.5rem;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+  background-color: var(--primary-light);
+  color: #fff;
+}
+
+.pg-login .accountTypes:hover {
+  background-color: var(--primary-light);
+  color: #fff;
+  cursor: pointer;
+}

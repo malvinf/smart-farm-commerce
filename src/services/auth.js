@@ -1,8 +1,17 @@
 import BaseService from './baseService';
 import API from '../config/rest';
+import { baseService } from '.';
 
-const Login = (email, password) => {
-  return BaseService.post(API.LOGIN, { email, password });
+const LoginC = (email, password) => {
+  return BaseService.post(API.LOGINC, { email, password });
 };
 
-export default { Login };
+const LoginP = (email, password) => {
+  return BaseService.post(API.LOGINP, { email, password });
+};
+
+const GetCustomer = (id) => {
+  return baseService.get(`${API.CUSTOMER}/${id}`);
+};
+
+export default { LoginC, LoginP, GetCustomer };

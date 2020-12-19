@@ -1,8 +1,15 @@
 import BaseService from './baseService';
 import API from '../config/rest';
 
-const Register = (name, email, address, password, phoneNumber, accountType) => {
-  return BaseService.post(API.REGISTER, {
+const RegisterC = (
+  name,
+  email,
+  address,
+  password,
+  phoneNumber,
+  accountType
+) => {
+  return BaseService.post(API.REGISTERC, {
     name,
     email,
     address,
@@ -12,4 +19,22 @@ const Register = (name, email, address, password, phoneNumber, accountType) => {
   });
 };
 
-export default { Register };
+const RegisterP = (
+  name,
+  email,
+  address,
+  password,
+  phoneNumber,
+  accountType
+) => {
+  return BaseService.post(API.REGISTERP, {
+    name,
+    email,
+    address,
+    password,
+    phoneNumber,
+    accountType,
+  });
+};
+
+export default { RegisterC, RegisterP };

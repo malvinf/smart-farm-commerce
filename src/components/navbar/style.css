@@ -27,7 +27,7 @@
   border-top: 2px solid #eee;
   text-decoration: none;
   text-transform: capitalize;
-  color: var(--primary) !important;
+  color: var(--passive) !important;
 }
 
 .container--header a.nav-link.active {
@@ -63,4 +63,14 @@
 
 .container--header div.register a:hover {
   color: var(--primary-light);
+}
+
+.container--header .cart {
+  text-decoration: none;
+  color: #000;
+}
+
+.container--header .cart .fa-shopping-cart {
+  color: var(--primary);
+  font-size: 20px;
 }

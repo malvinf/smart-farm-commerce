@@ -3,18 +3,38 @@ import React from 'react';
 import './App.css';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import routes from './config/routes';
-import { isUserAuthenticated } from './utils/cookie';
+import { isUserAuthenticated, accountType } from './utils/cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, accountTypes, ...rest }) => {
   return (
     <Route
       {...rest}
       render={() => {
         if (isUserAuthenticated()) {
-          return <Component />;
+          if (accountTypes === accountType()) {
+            return <Component />;
+          }
+          return <Redirect to="/" />;
         }
         return <Redirect to="/Login" />;
+      }}
+    />
+  );
+};
+
+const PublicRoute = ({ component: Component, path, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (isUserAuthenticated()) {
+          if (path !== '/Login' && path !== '/Register') {
+            return <Component />;
+          }
+          return <Redirect to="/" />;
+        }
+        return <Component />;
       }}
     />
   );
@@ -27,7 +47,7 @@ const App = () => {
         {routes.map((route) => {
           if (route.isPublic) {
             return (
-              <Route
+              <PublicRoute
                 path={route.path}
                 component={route.component}
                 key={route.path}
@@ -36,6 +56,7 @@ const App = () => {
           }
           return (
             <PrivateRoute
+              accountTypes={route.accountType}
               path={route.path}
               component={route.component}
               key={route.path}

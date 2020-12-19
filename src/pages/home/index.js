@@ -5,10 +5,10 @@ import './style.css';
 const Home = () => {
   return (
     <>
-      <Navbar activeMenu="home" />
+      <Navbar activeMenu="Home" />
       <div className="container">
         <div className="d-flex">
-          <div className="me-auto">home</div>
+          <div className="m-auto" />
         </div>
       </div>
     </>
