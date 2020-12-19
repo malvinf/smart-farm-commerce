@@ -16,6 +16,10 @@
   font-weight: 800;
 }
 
+.container-dflex {
+  align-items: center;
+}
+
 .container--header #headerNavbar {
   border-top: 2px solid #eee;
   text-decoration: none;

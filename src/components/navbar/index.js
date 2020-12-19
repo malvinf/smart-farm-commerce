@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { produk } from '../../services';
 import { isUserAuthenticated, setCookie, getCookie } from '../../utils/cookie';
+import { Logo } from '../../assets';
 import './style.css';
 
 const Navbar = (props) => {
@@ -10,9 +11,11 @@ const Navbar = (props) => {
   const [cartQty, setCartQty] = useState(0);
 
   useEffect(() => {
-    produk.GetCart(JSON.parse(getCookie('id'))).then((res) => {
-      setCartQty(res.data.length);
-    });
+    if (isUserAuthenticated()) {
+      produk.GetCart(JSON.parse(getCookie('id'))).then((res) => {
+        setCartQty(res.data.length);
+      });
+    }
   }, [cartQty]);
 
   const Logout = () => {
@@ -27,9 +30,9 @@ const Navbar = (props) => {
     <div className="container-fluid container--header">
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container d-block">
-          <div className="d-flex mb-3">
+          <div className="d-flex container-dflex mb-3">
             <a href="/" className="navbar-brand me-auto">
-              dél Harvèst
+              <img src={Logo} alt="Logo" width="141" height="50" />
             </a>
             {isUserAuthenticated() ? (
               <div className="d-flex">
@@ -102,14 +105,42 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="headerNavbar">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {listMenu.map((name) => {
-                if (
-                  JSON.parse(getCookie('accountType')) !== 'Petani' &&
-                  name === 'ProductForSeller'
-                ) {
-                  return <div key={name} />;
+                if (isUserAuthenticated()) {
+                  if (
+                    JSON.parse(getCookie('accountType')) !== 'Petani' &&
+                    name === 'ProductForSeller'
+                  ) {
+                    return <div key={name} />;
+                  }
+
+                  if (activeMenu === name) {
+                    return (
+                      <li className="nav-item" key={name}>
+                        <Link
+                          className="nav-link active"
+                          aria-current="page"
+                          to={`/${name}`}
+                        >
+                          <div className="menu">{name}</div>
+                        </Link>
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li className="nav-item" key={name}>
+                      <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to={`/${name}`}
+                      >
+                        <div className="menu">{name}</div>
+                      </Link>
+                    </li>
+                  );
                 }
 
-                if (activeMenu === name) {
+                if (name === 'Home') {
                   return (
                     <li className="nav-item" key={name}>
                       <Link
@@ -123,17 +154,7 @@ const Navbar = (props) => {
                   );
                 }
 
-                return (
-                  <li className="nav-item" key={name}>
-                    <Link
-                      className="nav-link"
-                      aria-current="page"
-                      to={`/${name}`}
-                    >
-                      <div className="menu">{name}</div>
-                    </Link>
-                  </li>
-                );
+                return <></>;
               })}
             </ul>
           </div>

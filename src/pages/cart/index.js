@@ -47,15 +47,7 @@ const Cart = () => {
       });
   };
 
-  // const CheckCheckout = () => {
-  //   if (durasi === '' && kurir === '' && metode === '') {
-  //     return false;
-  //   }
-  //   return true;
-  // };
-
   const Checkout = () => {
-    console.log(cust.address, total, metode, kurir, durasi);
     produk
       .Checkout(cust.address, total, metode, kurir, durasi)
       .then(() => {
