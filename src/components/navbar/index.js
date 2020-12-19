@@ -66,6 +66,15 @@ const Navbar = (props) => {
                     <li>
                       <Link
                         className="d-flex nav-link"
+                        to="/customer"
+                        key="customer"
+                      >
+                        <div className="menu">Profile</div>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="d-flex nav-link"
                         to="/"
                         onClick={() => {
                           Logout();
