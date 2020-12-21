@@ -26,4 +26,8 @@ const isUserAuthenticated = () => {
   return false;
 };
 
-export { isUserAuthenticated, getCookie, setCookie };
+const accountType = () => {
+  return JSON.parse(getCookie('accountType'));
+};
+
+export { accountType, isUserAuthenticated, getCookie, setCookie };

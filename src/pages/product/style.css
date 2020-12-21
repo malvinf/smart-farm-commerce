@@ -1,0 +1,70 @@
+.container {
+  justify-content: center;
+  align-items: center;
+}
+
+.pg-register div.register {
+  padding: 100px 6 0px;
+  width: 450px;
+}
+
+.pg-register .appsName {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.pg-register div.registerForm {
+  background-color: #fff;
+  border-radius: 12.5px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  padding: 3rem 2rem;
+  display: flex;
+}
+
+.pg-register div.registerForm label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pg-register .loginQuestion {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--passive);
+}
+
+.pg-register .loginQuestion a {
+  color: var(--primary-light);
+}
+
+.pg-register .accountTypes {
+  padding: 0.5rem 2rem;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+}
+
+.pg-register .accountTypes.active {
+  padding: 0.5rem 2rem;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+  background-color: var(--primary-light);
+  color: #fff;
+}
+
+.pg-register .accountTypes:hover {
+  background-color: var(--primary-light);
+  color: #fff;
+  cursor: pointer;
+}
+
+.pg-register .buttonSubmit {
+  width: 100%;
+  padding: 0.3rem 2rem;
+  border-radius: 0.2rem;
+  border: 0;
+  background-color: var(--primary);
+  color: #fff;
+}

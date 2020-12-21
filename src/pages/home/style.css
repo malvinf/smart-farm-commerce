@@ -1,0 +1,36 @@
+#root {
+  height: 100%;
+}
+
+.container--home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container--home p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container--home a {
+  text-decoration: none;
+}
+
+.container--home .pertanian_fancy {
+  text-decoration: none;
+  background-color: var(--primary-light);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.container--home .d-flex {
+  flex-direction: column;
+  text-align: center;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}

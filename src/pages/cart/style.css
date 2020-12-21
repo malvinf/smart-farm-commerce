@@ -1,0 +1,96 @@
+.container-all-cart {
+  align-items: flex-start !important;
+}
+
+.container-cart {
+  background-color: #fff;
+  border-width: 1px solid var(--passive);
+  padding: 30px;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  width: 65%;
+}
+
+.container-cart hr {
+  color: rgba(0, 0, 0, 0.14);
+}
+
+.container-cart .cartList {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.container-cart .cartDesc {
+  margin-left: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-cart .cart_title {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.container-cart .cart_desc,
+.container-cart .cart_price {
+  display: flex;
+  align-items: center;
+}
+
+.container-cart .cart_total_price {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.cart_total_price .cart_price-desc {
+  color: rgb(255, 92, 132) !important;
+}
+
+.container-cart .cart_desc-title,
+.container-cart .cart_price-title {
+  text-transform: uppercase;
+  color: rgba(49, 53, 59, 0.32);
+  font-weight: 700;
+  font-size: 12px;
+  width: 25%;
+}
+
+.container-cart .cart_desc-desc,
+.container-cart .cart_price-desc {
+  text-transform: capitalize;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.container-cart .input-group {
+  width: 25%;
+}
+
+.container-checkout {
+  margin-left: 30px;
+  width: 35%;
+  background-color: #fff;
+  border-width: 1px solid var(--passive);
+  padding: 30px;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+p.ringkasanBelanja {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+p.totalHarga {
+  font-size: 16px;
+}
+
+p.Harga {
+  font-size: 20px;
+  color: rgb(255, 92, 132);
+  font-weight: 800;
+}

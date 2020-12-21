@@ -1,0 +1,80 @@
+.container--header {
+  background-color: #fff;
+  z-index: 2;
+  min-height: fit-content;
+  width: 100%;
+  position: relative;
+  display: block;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.container--header a.navbar-brand {
+  color: var(--primary-light) !important;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.container-dflex {
+  align-items: center;
+}
+
+.container--header #headerNavbar {
+  border-top: 2px solid #eee;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--passive) !important;
+}
+
+.container--header a.nav-link {
+  border-top: 2px solid #eee;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--passive) !important;
+}
+
+.container--header a.nav-link.active {
+  border-top: 2px solid var(--primary);
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--primary) !important;
+}
+
+.container--header .nav-link:hover {
+  border-top: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.container--header a.login {
+  background-color: var(--primary);
+  padding: 0.3rem 2.5rem;
+  border-radius: 59px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.container--header a.login:hover {
+  background-color: var(--primary-light);
+  padding: 0.3rem 2.5rem;
+  border-radius: 59px;
+}
+
+.container--header div.register a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.container--header div.register a:hover {
+  color: var(--primary-light);
+}
+
+.container--header .cart {
+  text-decoration: none;
+  color: #000;
+}
+
+.container--header .cart .fa-shopping-cart {
+  color: var(--primary);
+  font-size: 20px;
+}

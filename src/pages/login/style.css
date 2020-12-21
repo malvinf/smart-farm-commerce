@@ -1,0 +1,87 @@
+html,
+body,
+#root {
+  height: 100%;
+  background-color: rgb(246, 245, 247);
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+}
+
+.pg-login div.login {
+  padding: 100px 80px;
+  width: 400px;
+}
+
+.pg-login .appsName {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.pg-login div.loginForm {
+  background-color: #fff;
+  border-radius: 12.5px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+}
+
+.pg-login .buttonSubmit {
+  width: 100%;
+  padding: 0.3rem 2rem;
+  border-radius: 0.2rem;
+  border: 0;
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.pg-login .buttonSubmit:hover {
+  background-color: var(--primary-light);
+}
+
+.pg-login div.notRegistered {
+  background-color: var(--primary);
+  border-top-right-radius: 12.5px;
+  border-bottom-right-radius: 12.5px;
+  color: #fff;
+  width: 400px;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pg-login a.buttonDaftar {
+  text-decoration: none;
+  text-align: center;
+  border: 0;
+  padding: 0.3rem 2rem;
+  background-color: #fff;
+  color: var(--primary);
+  border-radius: 0.2rem;
+}
+
+.pg-login .accountTypes {
+  padding: 0.3rem 1.5rem;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+}
+
+.pg-login .accountTypes.active {
+  padding: 0.3rem 1.5rem;
+  text-align: center;
+  width: 100%;
+  border: 1px solid var(--primary);
+  background-color: var(--primary-light);
+  color: #fff;
+}
+
+.pg-login .accountTypes:hover {
+  background-color: var(--primary-light);
+  color: #fff;
+  cursor: pointer;
+}
